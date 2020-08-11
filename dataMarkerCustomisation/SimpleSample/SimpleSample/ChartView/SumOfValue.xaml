@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:SimpleSample"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             x:Class="SimpleSample.SumOfValue">
+    <ContentView.Resources>
+        <ResourceDictionary>
+        <local:ChartAvgValueConverter x:Key="sumOfValuesConverter"/>
+        <DataTemplate x:Key="dataMarkerTemplate">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" BackgroundColor="LightBlue" Padding="5">
+                <Label Text="{Binding Converter={StaticResource sumOfValuesConverter}, ConverterParameter='Label'}" TextColor="{Binding Color}" FontSize="12" HorizontalTextAlignment="Center"/>
+                <Label Text="{Binding Converter={StaticResource sumOfValuesConverter}}" TextColor="White" FontSize="12" HorizontalTextAlignment="Center"/>
+            </StackLayout>
+        </DataTemplate>
+        </ResourceDictionary>
+    </ContentView.Resources>
+  <ContentView.Content>
+        <chart:SfChart BackgroundColor="Transparent">
+            <chart:SfChart.Legend>
+                <chart:ChartLegend DockPosition="Bottom" />
+            </chart:SfChart.Legend>
+            <chart:SfChart.Series>
+                <chart:PieSeries ItemsSource="{Binding MonthlyExpenses}" 
+                                             EnableSmartLabels="True" 
+                                 DataMarkerPosition="OutsideExtended"
+                                                    XBindingPath="XData" 
+                                                    YBindingPath="YData" 
+                                                  CircularCoefficient="0.7" StartAngle="90" EndAngle="450"
+                                                  EnableTooltip="true"
+                                             GroupMode="Percentage"
+                                             GroupTo="20"
+                                                    >
+                    <chart:PieSeries.DataMarker>
+                        <chart:ChartDataMarker x:Name="dataMarker" LabelContent="Percentage" LabelTemplate="{StaticResource dataMarkerTemplate}">
+                            <chart:ChartDataMarker.LabelStyle>
+                                <chart:DataMarkerLabelStyle LabelPosition="Center" BackgroundColor="LightBlue" TextColor="White" LabelFormat="$ ###"/>
+                            </chart:ChartDataMarker.LabelStyle>
+                        </chart:ChartDataMarker>
+                    </chart:PieSeries.DataMarker>
+                    <chart:PieSeries.ColorModel>
+                        <chart:ChartColorModel Palette="Custom" CustomBrushes="{Binding CustomColors}">
+                        </chart:ChartColorModel>
+                    </chart:PieSeries.ColorModel>
+                </chart:PieSeries>
+            </chart:SfChart.Series>
+            <chart:SfChart.ChartBehaviors>
+                <chart:ChartTooltipBehavior BackgroundColor="LightBlue" BorderColor="Transparent" BorderWidth="0"/>
+            </chart:SfChart.ChartBehaviors>
+        </chart:SfChart>
+    </ContentView.Content>
+</ContentView>
