@@ -83,7 +83,7 @@ Step 3: DataTemplate defined in the Series DataMarker LabelTemplate.
     </chart:SfChart>
 ```
 
-![](Images/Customization_1.png)
+![](Output/Customization_1.png)
 
 ## How to bind the Xamarin.Forms Pie Chart grouped data collection to the DataMarker Label
 
@@ -158,4 +158,4 @@ Step 3: DataTemplate defined in the Series DataMarker LabelTemplate.
 </chart:SfChart>
 ```
 
-![](Images/Customization_1.png)
+![](Output/Customization_1.png)
