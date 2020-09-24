@@ -83,7 +83,10 @@ Step 3: DataTemplate defined in the Series DataMarker LabelTemplate.
     </chart:SfChart>
 ```
 
+![](Images/Customization_1.png)
+
 ## How to bind the Xamarin.Forms Pie Chart grouped data collection to the DataMarker Label
+
 The below code example shows how to display the values, which present inside the group ‘Others’.
  
 Step 1: Declaration IValueConverter to generate BindableLayout ItemsSource
@@ -154,3 +157,5 @@ Step 3: DataTemplate defined in the Series DataMarker LabelTemplate.
     </chart:SfChart.Series>
 </chart:SfChart>
 ```
+
+![](Images/Customization_1.png)
